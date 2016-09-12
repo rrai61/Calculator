@@ -1,0 +1,74 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Sep 7, 2016, 9:24:40 PM
+    Author     : ritu
+*/
+body {
+    overflow-y: scroll;
+    background-color: lavender;
+    font-family: Courier,Verdana, Arial, Helvetica, sans-serif;
+}
+
+#headContainer {
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    background-color: lightcyan;
+    text-align: center;
+}
+
+#heading {
+    font-family: "Goudy Stout", Arial, Helvetica, sans-serif;
+    color: blue;
+}
+
+.textbox {
+    width:120px;
+}
+
+.titles {
+    font-weight: bold;
+    color: darkslategray;
+}
+
+.container {
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 10px;
+    margin-left: 350px;
+    margin-right: 200px;
+    width:600px;
+    background-color: whitesmoke;
+}
+
+.inside {
+    text-align: center;
+}
+
+.btn:hover {
+    color:gray;
+    box-shadow: 0 5px 15px paleturquoise;
+}
+
+.inputs {
+   margin-left: 160px;
+   text-align: left;
+}
+.shape {
+    border: 2px solid blue;
+    width: 250px;
+    height: 250px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.res {
+    border: 3px dotted orangered;
+    padding:5px;
+    font-weight: bold;
+    text-align: center;
+}
