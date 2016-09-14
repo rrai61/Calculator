@@ -14,15 +14,7 @@
     </head>
     <body>
         <h1 id="heading">Rectangle Area Results</h1>
-        <p class="res">AREA = <%
-            Object obj = request.getAttribute("rectangleMsg");
-            String msg = "Unknown";
-            if(obj != null) {
-                msg = obj.toString();
-            }
-            out.println(msg);
-        %>
-        </p>
+        <p class="res">${rectangleMsg}</p>
         <p><a href="webRectangleCalculatorLab1.jsp">Back to Lab1 Rectangle Calculator</a></p>
     </body>
 </html>

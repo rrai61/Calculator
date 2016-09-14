@@ -11,37 +11,54 @@ package model;
  */
 public class CalcService {
     
-    public String calculateAreaOfRectangle(String length, String width){
+    public final String calculateAreaOfRectangle(String length, String width){
+        String area;
         
-        double len = Double.parseDouble(length);
-        double wid = Double.parseDouble(width);
-        
-        double a = len * wid;
-        
-        String area = Double.toString(a);
-        
-        return area;
-    }
-    
-    public String calculateAreaOfCircle(String radius){
-        
-        double rad = Double.parseDouble(radius);
-        
-        double a = Math.PI * (rad*rad);
-        
-        String area = Double.toString(a);
+        if(length.isEmpty()||width.isEmpty()){
+           area = "Error: Both Length and Width required to calculate area";
+        }
+        else{
+            double len = Double.parseDouble(length);
+            double wid = Double.parseDouble(width);
+
+            double a = len * wid;
+
+            area = Double.toString(a);
+        }
         
         return area;
     }
     
-    public String calculateHypotenuseOfTriangle(String side1, String side2){
-        double s1 = Double.parseDouble(side1);
-        double s2 = Double.parseDouble(side2);
+    public final String calculateAreaOfCircle(String radius){
+        String area;
         
-        double h = Math.sqrt((s1 * s1) + (s2 * s2));
+        if(radius.isEmpty()){
+            area = "Error: Radius required to calculate area";
+        }
+        else{
+            double rad = Double.parseDouble(radius);
+
+            double a = Math.PI * (rad*rad);
+
+            area = Double.toString(a);
+        }
         
-        String hypotenuse = Double.toString(h);
-        
+        return area;
+    }
+    
+    public final String calculateHypotenuseOfTriangle(String side1, String side2){
+        String hypotenuse;
+        if(side1.isEmpty()||side2.isEmpty()){
+            hypotenuse = "Error: Both Side1 and Side2 required to calculate hypotenuse";
+        }
+        else{
+            double s1 = Double.parseDouble(side1);
+            double s2 = Double.parseDouble(side2);
+
+            double h = Math.sqrt((s1 * s1) + (s2 * s2));
+
+            hypotenuse = Double.toString(h);
+        }
         return hypotenuse;
     }
     

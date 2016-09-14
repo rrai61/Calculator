@@ -6,20 +6,22 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.CalcService;
+import model.ListService;
 
 /**
  *
  * @author ritu
  */
-@WebServlet(name = "CalculatorServlet", urlPatterns = {"/calculator"})
-public class CalculatorServlet extends HttpServlet {
+@WebServlet(name = "ListController", urlPatterns = {"/list"})
+public class ListController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,34 +36,9 @@ public class CalculatorServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        CalcService service = new CalcService();
-        String calculatedResult;
-
-        String key = request.getParameter("shape");
-        
-        Shapes shape = Shapes.valueOf(key);
-        
-        switch(shape){
-            case RECTANGLE:
-                String length = request.getParameter("length");
-                String width = request.getParameter("width");
-                calculatedResult = service.calculateAreaOfRectangle(length, width);
-                request.setAttribute("rectangleMsg", calculatedResult);
-                break;
-            case CIRCLE: 
-                String radius = request.getParameter("radius");
-                calculatedResult = service.calculateAreaOfCircle(radius);
-                request.setAttribute("circleMsg", calculatedResult);
-                break;
-            case TRIANGLE: 
-                String side1 = request.getParameter("side1");
-                String side2 = request.getParameter("side2");
-                calculatedResult = service.calculateHypotenuseOfTriangle(side1, side2);
-                request.setAttribute("triangleMsg", calculatedResult);
-                break;
-        }
-        
-        
+        ListService service = new ListService();
+        List<String> calculationsList = service.getCalculationsList();
+        request.setAttribute("calculationsList", calculationsList);
         RequestDispatcher view = request.getRequestDispatcher("/webCalculatorsHomepage.jsp");
         view.forward(request, response);
     }

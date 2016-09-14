@@ -5,6 +5,10 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -34,15 +38,8 @@
                         </tr>
                     </table><br>
                     <input id="submitValues" name="submitValues" class="btn" type="submit" value="Get Area">
-                    <%
-                        Object obj = request.getAttribute("rectangleMsg");
-                        String msg = "Unknown";
-                        if(obj != null) {
-                            msg = obj.toString();
-                        }
-                    %>
                 </div>
-                <p class="res">AREA = <% out.println(msg);%> </p>
+                <p class="res">AREA = ${rectangleMsg}</p>
             </div><br>
         </form>
             
@@ -58,14 +55,7 @@
                         <td><input class="textbox" type="text" name="radius"/></td>
                     </table><br>
                     <input id="submitRadius" class="btn" name="submitRadius" type="submit" value="Get Area">
-                    <%
-                        Object obj2 = request.getAttribute("circleMsg");
-                        String msg2 = "Unknown";
-                        if(obj2 != null) {
-                            msg2 = obj2.toString();
-                        }
-                    %>
-                    <p class="res">AREA = <% out.println(msg2);%> </p>
+                    <p class="res">AREA = ${circleMsg}</p>
                 </div>
             </div><br>
         </form>
@@ -88,16 +78,23 @@
                         </tr>
                     </table><br>
                     <input id="submitSides" name="submitSides" class="btn" type="submit" value="Get Hypotenuse Length">
-                    <%
-                        Object obj3 = request.getAttribute("triangleMsg");
-                        String msg3 = "Unknown";
-                        if(obj3 != null) {
-                            msg3 = obj3.toString();
-                        }
-                    %>
-                    <p class="res">HYPOTENUSE = <% out.println(msg3);%> </p>
+                    <p class="res">HYPOTENUSE = ${triangleMsg} </p>
                 </div>
             </div>
+        </form><br><br>
+        
+        <form id="listForm" name="listForm" method="POST" action="list">
+        <div class="container">
+            <div class="inside">
+                <h3 class="titles">Calculations List</h3>
+                <input name="shwListBtn" class= "btn" type="submit" value="Show List"/>
+                <ul>
+                <c:forEach var="item" items="${calculationsList}">
+                    <li>${item}</li>
+                </c:forEach>
+                </ul>
+            </div>
+        </div>
         </form>
     </body>
 </html>

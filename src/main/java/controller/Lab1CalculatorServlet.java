@@ -37,14 +37,11 @@ public class Lab1CalculatorServlet extends HttpServlet {
         
         CalcService service = new CalcService();
         
-        String calculatedResult = "Unknown";
+        String calculatedResult;
         
         String length = request.getParameter("length");
                 String width = request.getParameter("width");
-                if(length.isEmpty()||width.isEmpty()){
-                   calculatedResult = "Unknown";
-                }
-                else{calculatedResult = service.calculateAreaOfRectangle(length, width);}
+                calculatedResult = service.calculateAreaOfRectangle(length, width);
                 request.setAttribute("rectangleMsg", calculatedResult);
         
         RequestDispatcher view = request.getRequestDispatcher("/resultsLab1.jsp");
